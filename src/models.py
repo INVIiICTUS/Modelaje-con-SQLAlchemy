@@ -8,8 +8,8 @@ from eralchemy import render_er
 
 Base = declarative_base()
 
-class User(Base):
-    __tablename__ = 'User'
+class user(Base):
+    __tablename__ = 'user'
     id = Column(Integer, primary_key=True)
     name = Column(String(250), nullable=False)
     email = Column(String(250), nullable=False)
@@ -23,7 +23,7 @@ class favoritos(Base):
         return {}
     
 
-class Vehiculos(Base):
+class vehículos(Base):
     __tablename__ = 'Vehiculos'
     id = Column(Integer, primary_key=True)
     velocidad = Column(String(250), nullable=False)
@@ -42,15 +42,11 @@ class personajes(Base):
 
 class planeta(Base):
     __tablename__ = 'planeta'
-    id = Column(Integer)
+    id = Column(Integer, primary_key=True)
     poblacion = Column(String(250), nullable=False)
     galaxia = Column(Integer, ForeignKey('personajes.id'))
     def to_dict(self):
         return {}
 
 
-
-
-
-## Draw from SQLAlchemy base
 render_er(Base, 'diagram.png')
